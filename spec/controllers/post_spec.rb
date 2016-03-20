@@ -1,6 +1,10 @@
 require 'rails_helper'
 
-Rspec.describe PostsController, type: :controller do
+describe PostsController, type: :controller do
+  before do
+    @post = FactoryGirl.build(:first)
+  end
+
   describe "GET index" do
     it "renders the index template" do
       get :index
@@ -10,8 +14,8 @@ Rspec.describe PostsController, type: :controller do
 
   describe "POST create" do
     it "renders the show template" do
-      post :create
-      expect(response).to render_template("show")
+      post :create, :post => { :title => @post.title, :content => @post.content }
+      expect(response).to redirect_to(post_path(@post))
     end
   end
 end

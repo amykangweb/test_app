@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Post, type: :model do
+describe Post, type: :model do
   before do
     @post = FactoryGirl.build(:first)
     @post.save

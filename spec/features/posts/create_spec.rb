@@ -22,7 +22,7 @@ describe "Creating Post" do
     fill_in "Title", with: ""
     fill_in "Content", with: @post.content
     click_button "Create Post"
-    expect(page).to have_content("Title cannot be blank.")
+    expect(page).to have_content("Title can't be blank")
   end
 
   it "shows error message when content is blank" do
@@ -31,6 +31,6 @@ describe "Creating Post" do
     fill_in "Title", with: @post.title
     fill_in "Content", with: ""
     click_button "Create Post"
-    expect(page).to have_content("Content cannot be blank.")
+    expect(page).to have_content("Content can't be blank")
   end
 end
