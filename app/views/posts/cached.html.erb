@@ -1,0 +1,11 @@
+<%= link_to "Home", root_path %>
+
+<h2>Iterated Posts With Caching</h2>
+
+<% cache @posts do %>
+  <%- @posts.each do |post| %>
+    <% cache post do %>
+      <%= render 'post', post: post %>
+    <% end %>
+  <% end %>
+<% end %>

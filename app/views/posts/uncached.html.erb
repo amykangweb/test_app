@@ -1,0 +1,7 @@
+<%= link_to "Home", root_path %>
+
+<h2>Iterated Posts Without Caching</h2>
+
+<%- @posts.each do |post| %>
+  <%= render 'post', post: post %>
+<% end %>
