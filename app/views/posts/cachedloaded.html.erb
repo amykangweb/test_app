@@ -1,6 +1,6 @@
 <%= link_to "Home", root_path %>
 
-<h2>Cached Collection</h2>
+<h2>Cached Collection Posts Comments Loaded</h2>
 
 <% cache @posts do %>
 <%= render partial: 'post_two', collection: @posts, as: :post %>

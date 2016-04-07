@@ -1,9 +1,7 @@
+<% cache post do %>
 <p>
 <strong><%= post.title %></strong><br>
 <%= post.content %>
-
-<p><%= link_to "View", post %></p>
-<p><%= link_to "View Loaded", includeshow_post_path(post) %></p>
 
 <p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
 
@@ -16,3 +14,4 @@
   <%= link_to "Edit", edit_post_path(post) %>
 </p>
 </p>
+<% end %>

@@ -5,7 +5,21 @@
 <% cache @posts do %>
   <%- @posts.each do |post| %>
     <% cache post do %>
-      <%= render 'post', post: post %>
+      <p>
+<strong><%= post.title %></strong><br>
+<%= post.content %>
+
+<p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
+
+<h2>Comments:</h2>
+
+  <%- post.comments.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
+<p>
+  <%= link_to "Edit", edit_post_path(post) %>
+</p>
+</p>
     <% end %>
   <% end %>
 <% end %>

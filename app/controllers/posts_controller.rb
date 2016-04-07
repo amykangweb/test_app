@@ -7,6 +7,14 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def loaded
+    @posts = Post.includes(:comments).all
+  end
+
+  def cachedloaded
+    @posts = Post.includes(:comments).all
+  end
+
   def cachedcollection
     @posts = Post.all
   end
@@ -26,6 +34,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def includeshow
+    @post = Post.includes(:comments).where(id: params[:id]).first
   end
 
   # GET /posts/new
