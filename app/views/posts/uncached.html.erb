@@ -2,6 +2,20 @@
 
 <h2>Iterated Posts Without Caching</h2>
 
-<%- @posts.each do |post| %>
-  <%= render 'post', post: post %>
+  <%- @posts.each do |post| %>
+      <p>
+      <strong><%= post.title %></strong><br>
+      <%= post.content %>
+
+      <p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
+
+<h2>Comments:</h2>
+
+    <%- post.comments.each do |comment| %>
+        <p><%= comment.body %></p>
+    <% end %>
+<p>
+  <%= link_to "Edit", edit_post_path(post) %>
+</p>
+</p>
 <% end %>

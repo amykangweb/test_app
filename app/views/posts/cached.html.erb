@@ -2,19 +2,23 @@
 
 <h2>Iterated Posts With Caching</h2>
 
-<% cache @posts do %>
+<% cache ["posts", @posts] do %>
   <%- @posts.each do |post| %>
-    <% cache post do %>
+    <% cache ["post", post] do %>
       <p>
-<strong><%= post.title %></strong><br>
-<%= post.content %>
+      <strong><%= post.title %></strong><br>
+      <%= post.content %>
 
-<p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
+      <p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
 
 <h2>Comments:</h2>
 
-  <%- post.comments.each do |comment| %>
-    <p><%= comment.body %></p>
+  <% cache ["comments", post.comments] do %>
+    <%- post.comments.each do |comment| %>
+      <% cache ["comment", comment.body] do %>
+        <p><%= comment.body %></p>
+      <% end %>
+    <% end %>
   <% end %>
 <p>
   <%= link_to "Edit", edit_post_path(post) %>
