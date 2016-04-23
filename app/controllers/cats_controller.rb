@@ -15,6 +15,7 @@ class CatsController < ApplicationController
   # GET /cats/new
   def new
     @cat = Cat.new
+    @post = Post.find(params[:post_id])
   end
 
   # GET /cats/1/edit
@@ -29,7 +30,7 @@ class CatsController < ApplicationController
     @cat.post_id = @post.id
     respond_to do |format|
       if @cat.save
-        format.html { redirect_to @cat, notice: 'Cat was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Cat was successfully created.' }
         format.json { render :show, status: :created, location: @cat }
       else
         format.html { render :new }

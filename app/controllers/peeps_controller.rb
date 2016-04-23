@@ -15,6 +15,7 @@ class PeepsController < ApplicationController
   # GET /peeps/new
   def new
     @peep = Peep.new
+    @comment = Comment.find(params[:comment_id])
   end
 
   # GET /peeps/1/edit
@@ -29,7 +30,7 @@ class PeepsController < ApplicationController
     @peep.comment_id = @comment.id
     respond_to do |format|
       if @peep.save
-        format.html { redirect_to @peep, notice: 'Peep was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Peep was successfully created.' }
         format.json { render :show, status: :created, location: @peep }
       else
         format.html { render :new }

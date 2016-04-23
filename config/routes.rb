@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :cachedcollection
       get :loaded
       get :cachedloaded
+      get :direct
     end
   end
 

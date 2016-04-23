@@ -1,3 +1,8 @@
+<p><%= link_to "Home", root_path %>
+
+<h1>Posts without direct association</h1>
+
+<%- @posts.each do |post| %>
 <p>
 <strong><%= post.title %></strong><br>
 <%= post.content %>
@@ -7,25 +12,21 @@
 
 <p><%= link_to "New Comment", new_post_comment_path(post_id: post.id) %>
 
-<h2>Post Peeps</h2>
-
-<%- post.peeps.each do |peep| %>
-  <p><%= peep.content %></p>
-<% end %>
+<h2>Comments:</h2>
 
     <h2>Cats</h2>
     <%- post.cats.each do |cat| %>
       <p><em><%= cat.name %></em></p>
 
       <h2>Cat Comments</h2>
-      <% cat.comments.each do |comment| %>
+      <%- cat.post.comments.each do |comment| %>
         <p><%= comment.body %></p>
       <% end %>
 
     <% end %>
     <p><%= link_to "New Cat", new_cat_path(post_id: post.id) %>
-
 <p>
   <%= link_to "Edit", edit_post_path(post) %>
 </p>
 </p>
+<% end %>

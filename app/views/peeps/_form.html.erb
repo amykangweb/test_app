@@ -1,4 +1,4 @@
-<%= form_for(@peep) do |f| %>
+<%= form_for(@peep, url: peeps_path(@peep, comment_id: @comment.id), html: { method: :post }) do |f| %>
   <% if @peep.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@peep.errors.count, "error") %> prohibited this peep from being saved:</h2>

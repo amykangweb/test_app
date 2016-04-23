@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   has_many :comments, dependent: :destroy
   has_many :cats, dependent: :destroy
+  has_many :peeps, through: :comments, source: :peeps
 end
